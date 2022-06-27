@@ -1,0 +1,7 @@
+<div>
+  <h1 class="font-bold text-4xl">Grocery List</h1>
+  
+  <h2 class="font-bold text-3xl mt-4">To buy <span class="text-sm bg-blue-300 p-1 rounded-md"><%= @grocery_items.needed.count %></span></h2>
+
+  <%= turbo_frame_tag "grocery_items", src: grocery_items_path, loading: 'lazy' %>
+</div>

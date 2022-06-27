@@ -1,0 +1,7 @@
+  <%= form_with model: grocery_item, id: "grocery_item_form" do |f| %>
+    <%= f.text_field :name %>
+    <p>
+      <%= f.object.errors.full_messages_for(:name).first %>
+    </p>
+    <%= f.submit "Add item" %>
+  <% end %>
