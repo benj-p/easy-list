@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "pages#home"
 
-  resources :grocery_items
+  resources :lists do
+    resources :items
+  end
 end

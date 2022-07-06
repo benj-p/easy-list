@@ -1,0 +1,11 @@
+<div id=<%= dom_id(item) %> data-controller="item" class="flex justify-between bg-white rounded-lg py-3 px-5 mb-2">
+  <div class="flex">
+    <%= form_with model: [item.list, item], data: { item_target: "form" } do |f| %>
+      <%= f.check_box :done, {data: {item_target: "checkbox", action: "change->item#submitForm"}, class: 'w-6 h-6 rounded-full mr-3 cursor-pointer' }, 1, 0 %>
+    <% end %>
+    <span class="cursor-pointer	<%= 'line-through' if item.done %>" data-action="click->item#toggleCheckbox"><%= item.name %></span>
+  </div>
+  <%= button_to list_item_path(item.list, item), method: :delete, form: {data: {turbo_confirm: 'Are you sure ?'}} do %>
+    <i class="fa-solid fa-trash text-gray-600"></i>
+  <% end %>
+</div>

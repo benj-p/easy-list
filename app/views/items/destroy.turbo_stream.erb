@@ -1,0 +1,2 @@
+<%= turbo_stream.remove(@item) %>
+<%= turbo_stream.update(:items_count, Item.not_done.count) %>

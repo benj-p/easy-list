@@ -1,0 +1,8 @@
+<div data-controller="item" id="add-item-wrapper" class="inline-flex mb-5">
+  <div data-item-target="addItemButton" data-action="click->item#showAddItemForm" class="bg-gray-200 rounded-lg px-5 py-3 border border-gray-300">
+    + Add item
+  </div>
+  <div class="hidden" data-item-target="addItemForm">
+    <%= render partial: 'items/form', locals: { list: list, item: Item.new } %>
+  </div>
+</div>

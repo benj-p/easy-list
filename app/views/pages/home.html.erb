@@ -1,12 +1,19 @@
-<div>
-  <h1 class="font-bold text-4xl mb-4">Easy List</h1>
+<h1 class="font-bold text-4xl mb-4">Easy List</h1>
 
-  <h2 class="font-bold text-2xl mb-3">Grocery List <span id="grocery_items_count" class="text-sm bg-blue-300 p-1 rounded-md"><%= @grocery_items.needed.count %></span></h2>
+<%= turbo_frame_tag "lists", src: lists_path, loading: 'lazy', target: '_top' do %>
+  <i class="fas fa-spinner fa-spin fa-2xl"></i>
+  <span>Loading lists...</span>
+<% end %>
 
-  <%= render partial: 'grocery_items/form', locals: { grocery_item: GroceryItem.new } %>
+<%= turbo_frame_tag "items" %>
 
-  <%= turbo_frame_tag "grocery_items", src: grocery_items_path, loading: 'la zy' do %>
+<% if false %>
+  <h2 class="font-bold text-2xl mb-3">My first list <span id="items_count" class="text-sm bg-blue-300 p-1 rounded-md"><%= @items.not_done.count %></span></h2>
+
+  <%= render 'items/add_item_button' %>
+
+  <%= turbo_frame_tag "items", src: items_path, loading: 'lazy' do %>
     <i class="fas fa-spinner fa-spin fa-2xl"></i>
     <span>Loading list...</span>
   <% end %>
-</div>
+<% end %>

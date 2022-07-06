@@ -1,9 +1,13 @@
-puts "🗑  Deleting previous Grocery Items"
-GroceryItem.destroy_all
+puts "🗑  Deleting previous Lists & Items"
+Item.destroy_all
+List.destroy_all
 
-puts "🍎 Adding Grocery Items"
+puts "🗒 Creating list"
+grocery_list = List.create!(name: "Groceries")
 
-10.times { GroceryItem.create!(name: Faker::Food.ingredient) }
-2.times { GroceryItem.create!(name: Faker::Food.ingredient, is_needed: false) }
+puts "🍎 Adding Items"
+
+10.times { Item.create!(name: Faker::Food.ingredient, list: grocery_list) }
+2.times { Item.create!(name: Faker::Food.ingredient, list: grocery_list, done: true) }
 
 puts "✅ All done"
