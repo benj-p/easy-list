@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:update, :destroy]
-  before_action :set_items, only: [:index, :update]
+  before_action :set_items, only: [:index]
 
   def index
     render partial: 'items/items', locals: { items: @items }
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update(item_params)
       render turbo_stream: [
-        turbo_stream.replace(:items, partial: 'items/items', locals: { items: @items }),
+        turbo_stream.replace(helpers.dom_id(@item), partial: 'items/item', locals: { item: @item }),
         turbo_stream.update(:items_count, Item.not_done.count)
       ]
     end
@@ -43,6 +43,6 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    @items = Item.order(done: :asc, updated_at: :desc)
+    @items = Item.order(created_at: :desc)
   end
 end
