@@ -3,6 +3,10 @@
   <%= render partial: 'items/add_item_button', locals: { list: @list } %>
 
   <%= turbo_frame_tag "items", src: list_items_path(@list), loading: 'lazy' do %>
-    <i class="fas fa-spinner fa-spin fa-2xl"></i>
-    <span>Loading items...</span>
+    <div>
+      <i class="fas fa-spinner fa-spin fa-2xl"></i>
+      <span>Loading items...</span>
+    </div>
   <% end %>
+  
+  <%= link_to 'Clear list', list_clear_items_path(@list), data: { turbo_method: :delete } %>

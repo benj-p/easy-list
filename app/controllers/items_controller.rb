@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
         turbo_stream.replace('add-item-wrapper', partial: 'items/add_item_button', locals: { list: item.list })
       ]
     else
-      render turbo_stream: turbo_stream.replace(:item_form, partial: 'items/form', locals: { item: item})
+      render turbo_stream: turbo_stream.replace('item_form', partial: 'items/form', locals: { list: item.list, item: item })
     end
   end
 

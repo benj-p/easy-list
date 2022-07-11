@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="item"
 export default class extends Controller {
-  static targets = ["form", "checkbox", "addItemButton", "addItemForm"]
+  static targets = ["form", "checkbox", "addItemButton", "addItemForm", "input", "error", "submitButton"]
 
   submitForm() {
     this.formTarget.requestSubmit()
@@ -16,6 +16,7 @@ export default class extends Controller {
   showAddItemForm() {
     this.addItemButtonTarget.classList.add('hidden')
     this.addItemFormTarget.classList.remove('hidden')
+    this.inputTarget.focus()
   }
 
   hideAddItemForm() {
@@ -29,5 +30,19 @@ export default class extends Controller {
   
     // Hide form and show Add Item button
     this.hideAddItemForm()
+  }
+
+  removeErrors() {
+    this.errorTarget.innerHTML = ''
+    this.inputTarget.classList.remove('border-red-500', 'bg-red-100')
+  }
+
+  enableSubmit() {
+    if (this.inputTarget.value.length > 0) {
+      this.submitButtonTarget.disabled = false
+      return
+    }
+
+    this.submitButtonTarget.disabled = true
   }
 }

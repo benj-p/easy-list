@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :lists do
+    delete '/clear_items', to: 'lists#clear_items'
     resources :items
   end
 end

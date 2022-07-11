@@ -9,6 +9,13 @@ class ListsController < ApplicationController
   def show
   end
 
+  def clear_items
+    @list = List.find(params[:list_id])
+    if @list.items.destroy_all
+      render turbo_stream: turbo_stream.replace(:items, partial: 'items/items', locals: { items: nil })
+    end
+  end
+
   private
 
   def set_list
