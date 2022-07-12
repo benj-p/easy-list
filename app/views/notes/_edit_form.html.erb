@@ -1,0 +1,3 @@
+<%= form_with model: note, data: { note_target: 'editForm' } do |f| %>
+  <%= f.text_area :body, data: {note_target: 'textArea', action: 'input->note#resizeTextArea keyup->note#saveInput' }, class: 'w-full bg-white border-none rounded-lg py-3 px-5 resize-none overflow-hidden' %>
+<% end %>

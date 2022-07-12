@@ -6,8 +6,7 @@ class ListsController < ApplicationController
     render partial: 'lists/lists', locals: { lists: @lists }
   end
 
-  def show
-  end
+  def show; end
 
   def clear_items
     @list = List.find(params[:list_id])

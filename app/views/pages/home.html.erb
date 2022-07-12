@@ -1,19 +1,37 @@
 <h1 class="font-bold text-4xl mb-4">Easy List</h1>
 
-<%= turbo_frame_tag "lists", src: lists_path, loading: 'lazy', target: '_top' do %>
-  <i class="fas fa-spinner fa-spin fa-2xl"></i>
-  <span>Loading lists...</span>
-<% end %>
-
-<%= turbo_frame_tag "items" %>
-
-<% if false %>
-  <h2 class="font-bold text-2xl mb-3">My first list <span id="items_count" class="text-sm bg-blue-300 p-1 rounded-md"><%= @items.not_done.count %></span></h2>
-
-  <%= render 'items/add_item_button' %>
-
-  <%= turbo_frame_tag "items", src: items_path, loading: 'lazy' do %>
+<section class="mb-3">
+  <h2>My lists</h2>
+  <%= turbo_frame_tag "lists", src: lists_path, loading: 'lazy', target: '_top' do %>
     <i class="fas fa-spinner fa-spin fa-2xl"></i>
-    <span>Loading list...</span>
+    <span>Loading lists...</span>
   <% end %>
-<% end %>
+</section>
+
+<section>
+  <h2>My notes</h2>
+  <%= turbo_frame_tag "notes", src: notes_path, loading: 'lazy', target: '_top' do %>
+    <i class="fas fa-spinner fa-spin fa-2xl"></i>
+    <span>Loading lists...</span>
+  <% end %>
+</section>
+
+<div data-controller="fab" class="fixed bottom-6 right-6 flex flex-col items-end">
+  <div class="flex flex-col items-end transition-all overflow-hidden max-h-0 opacity-0" data-fab-target="newItemsButtons">
+    <div class="flex items-center mb-3 group">
+      <span class="mr-3 md:group-hover:font-medium">New list</span>
+      <div class="bg-blue-700 md:group-hover:bg-blue-800 rounded-full w-16 h-16 flex justify-center items-center">
+        <span class="text-2xl text-white font-bold"><i class="fa-solid fa-list-check"></i></span>
+      </div>  
+    </div>
+    <div class="flex items-center mb-3 group">
+      <span class="mr-3 md:group-hover:font-medium">New note</span>
+      <div class="bg-blue-700 md:group-hover:bg-blue-800 rounded-full w-16 h-16 flex justify-center items-center">
+        <span class="text-2xl text-white font-bold"><i class="fa-solid fa-file-lines"></i></span>
+      </div>  
+    </div>
+  </div>
+  <div class="bg-blue-700 md:hover:bg-blue-800 text-2xl font-bold shadow-lg shadow-gray-400 rounded-full w-16 h-16 flex justify-center items-center transition-all" data-fab-target="addButton" data-action="click->fab#toggle">
+    <span class="text-white">+</span>
+  </div>
+</div>

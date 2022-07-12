@@ -1,0 +1,10 @@
+<%= render 'shared/back_home' %>
+
+<div data-controller="note">
+  <div class="flex items-center justify-between">
+    <h2><%= @note.title %></h2>
+    <%= render 'shared/spinner' %>
+  </div>
+
+  <%= render partial: 'notes/edit_form', locals: { note: @note } %>
+</div>
