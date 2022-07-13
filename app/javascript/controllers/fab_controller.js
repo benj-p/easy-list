@@ -14,15 +14,23 @@ export default class extends Controller {
 
   collapse() {
     this.addButtonTarget.classList.remove('rotate-45', 'bg-blue-400')
-    this.addButtonTarget.classList.add('shadow-lg')
+    this.addButtonTarget.classList.add('shadow-lg', 'bg-blue-700')
     this.newItemsButtonsTarget.classList.remove('ease-in', 'duration-300', 'max-h-96', 'opacity-100', 'active')
     this.newItemsButtonsTarget.classList.add('max-h-0', 'opacity-0')
   }
 
   expand() {
     this.addButtonTarget.classList.add('rotate-45', 'bg-blue-400')
-    this.addButtonTarget.classList.remove('shadow-lg')
+    this.addButtonTarget.classList.remove('shadow-lg', 'bg-blue-700')
     this.newItemsButtonsTarget.classList.add('ease-in', 'duration-300', 'max-h-96', 'opacity-100', 'active')
     this.newItemsButtonsTarget.classList.remove('max-h-0', 'opacity-0')
+  }
+
+  collapseIfOutsideClick(event) {
+    // Ignore event if clicked within element
+    if(this.element === event.target || this.element.contains(event.target)) return;
+  
+    // Hide form and show Add Item button
+    this.collapse()
   }
 }
