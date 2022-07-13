@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  resources :notes, only: [:index, :show, :update]
+  resources :notes, only: [:index, :show, :new, :create, :update]
 end

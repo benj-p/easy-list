@@ -8,6 +8,13 @@ class NotesController < ApplicationController
 
   def show; end
 
+  def new
+    
+  end
+
+  def create
+  end
+
   def update
     if @note.update(note_params)
       render turbo_stream: [

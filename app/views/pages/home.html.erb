@@ -24,14 +24,16 @@
         <span class="text-2xl text-white font-bold"><i class="fa-solid fa-list-check"></i></span>
       </div>  
     </div>
-    <div class="flex items-center mb-3 group">
-      <span class="mr-3 md:group-hover:font-medium">New note</span>
-      <div class="bg-blue-700 md:group-hover:bg-blue-800 rounded-full w-16 h-16 flex justify-center items-center">
-        <span class="text-2xl text-white font-bold"><i class="fa-solid fa-file-lines"></i></span>
-      </div>  
-    </div>
+    <%= link_to new_note_path do %>
+      <div class="flex items-center mb-3 group">
+        <span class="mr-3 md:group-hover:font-medium">New note</span>
+        <div class="bg-blue-700 md:group-hover:bg-blue-800 rounded-full w-16 h-16 flex justify-center items-center">
+          <span class="text-2xl text-white font-bold"><i class="fa-solid fa-file-lines"></i></span>
+        </div>  
+      </div>
+    <% end %>
   </div>
-  <div class="bg-blue-700 md:hover:bg-blue-800 text-2xl font-bold shadow-lg shadow-gray-400 rounded-full w-16 h-16 flex justify-center items-center transition-all" data-fab-target="addButton" data-action="click->fab#toggle">
-    <span class="text-white">+</span>
+  <div class="bg-blue-700 text-3xl font-semibold text-white shadow-lg shadow-gray-400 rounded-full w-16 h-16 flex justify-center items-center transition-all cursor-pointer select-none" data-fab-target="addButton" data-action="click->fab#toggle">
+    +
   </div>
 </div>
