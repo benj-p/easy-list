@@ -13,7 +13,8 @@ export default class extends Controller {
   }
 
   collapse() {
-    document.querySelector("main").classList.remove('blur-md', 'pointer-events-none')
+    document.querySelector("main").classList.remove('transition', 'blur-md', 'pointer-events-none')
+    document.querySelector("main").classList.add('duration-150')
     this.addButtonTarget.classList.remove('rotate-45', 'bg-blue-400')
     this.addButtonTarget.classList.add('shadow-lg', 'bg-blue-700')
     this.newItemsButtonsTarget.classList.remove('ease-in', 'duration-300', 'max-h-96', 'opacity-100', 'active')
@@ -21,7 +22,8 @@ export default class extends Controller {
   }
 
   expand() {
-    document.querySelector("main").classList.add('blur-md', 'pointer-events-none')
+    document.querySelector("main").classList.add('transition', 'blur-md', 'pointer-events-none')
+    document.querySelector("main").classList.remove('duration-150')
     this.addButtonTarget.classList.add('rotate-45', 'bg-blue-400')
     this.addButtonTarget.classList.remove('shadow-lg', 'bg-blue-700')
     this.newItemsButtonsTarget.classList.add('ease-in', 'duration-300', 'max-h-96', 'opacity-100', 'active')
