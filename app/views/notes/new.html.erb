@@ -2,5 +2,5 @@
 
 <%= form_with model: Note.new do |f| %>
   <%= f.text_field :title, placeholder: 'My new note', class: 'w-full bg-white border-none rounded-lg py-3 px-5 overflow-hidden mb-3' %>
-  <%= f.text_area :body, placeholder: 'Write about anything here...', data: {note_target: 'textArea', action: 'input->note#resizeTextArea keyup->note#saveInput' }, class: 'w-full bg-white border-none rounded-lg py-3 px-5 resize-none overflow-hidden' %>
+  <%= f.text_area :body, placeholder: 'Start writing here...', data: {note_target: 'textArea', action: 'input->note#resizeTextArea keyup->note#saveInput' }, class: 'w-full bg-white border-none rounded-lg py-3 px-5 resize-none overflow-hidden' %>
 <% end %>
