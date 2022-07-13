@@ -43,3 +43,6 @@
 
 # Environment variables
 .env
+
+# Mac-specific files
+**/.DS_Store
