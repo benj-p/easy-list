@@ -35,3 +35,8 @@
 
 # Ignore version (ZIP for AWS BS)
 /versions/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
