@@ -45,4 +45,12 @@ export default class extends Controller {
 
     this.submitButtonTarget.disabled = true
   }
+
+  fixBody() {
+    document.querySelector('body').classList.add('fixed', 'h-full', 'w-full')
+  }
+
+  unfixBody() {
+    document.querySelector('body').classList.remove('fixed', 'h-full', 'w-full')
+  }
 }
