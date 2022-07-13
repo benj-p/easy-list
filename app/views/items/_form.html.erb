@@ -1,7 +1,7 @@
 <%= form_with model: [list, item], id: "item_form", data: {action: "click@window->item#hideFormIfOutsideClick"} do |f| %>
   <div class="flex">
     <%= f.hidden_field :list_id, value: list.id %> 
-    <%= f.text_field :name, data: { item_target: "input", action: "focus->item#fixBody blur->item#unfixBody input->item#removeErrors input->item#enableSubmit"}, class: "rounded-lg border-1 border-blue-700 #{'border-red-500 bg-red-100' if f.object.errors[:name].present?}" %>
+    <%= f.text_field :name, data: { item_target: "input", action: "focus->item#hideFab blur->item#showFab input->item#removeErrors input->item#enableSubmit"}, class: "rounded-lg border-1 border-blue-700 #{'border-red-500 bg-red-100' if f.object.errors[:name].present?}" %>
     <%= f.submit "Add item", data: { item_target: "submitButton" }, disabled: true, class: 'rounded-lg bg-blue-700 md:hover:bg-blue-800 font-semibold text-white cursor-pointer px-3 disabled:opacity-25 disabled:cursor-not-allowed' %>
   </div>
   <p data-item-target="error" class="mt-2 text-sm text-red-600">

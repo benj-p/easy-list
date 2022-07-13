@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="item"
 export default class extends Controller {
-  static targets = ["form", "checkbox", "addItemButton", "addItemForm", "input", "error", "submitButton"]
+  static targets = ["form", "checkbox", "addItemButton", "addItemForm", "input", "error", "submitButton", "addButton"]
 
   submitForm() {
     this.formTarget.requestSubmit()
@@ -46,11 +46,11 @@ export default class extends Controller {
     this.submitButtonTarget.disabled = true
   }
 
-  fixBody() {
-    document.querySelector('body').classList.add('fixed', 'h-full', 'w-full')
+  hideFab() {
+    document.getElementById('fab').classList.add('hidden', 'sm:flex')
   }
 
-  unfixBody() {
-    document.querySelector('body').classList.remove('fixed', 'h-full', 'w-full')
+  showFab() {
+    document.getElementById('fab').classList.remove('hidden', 'sm:flex')
   }
 }
