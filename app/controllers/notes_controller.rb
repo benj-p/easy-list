@@ -1,12 +1,15 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :update]
+  before_action :authenticate_user!
 
   def index
-    @notes = Note.all
+    @notes = Note.where(user: current_user)
     render partial: 'notes/notes', locals: { notes: @notes }
   end
 
-  def show; end
+  def show
+    user_not_authorized if @note.user != current_user
+  end
 
   def new
     
@@ -14,6 +17,8 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
+    @note.user = current_user
+
     if @note.save
       redirect_to @note
     end
@@ -35,6 +40,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :body)
+    params.require(:note).permit(:title, :body, :user_id)
   end
 end
