@@ -7,7 +7,7 @@
   <% break unless provider == :google_oauth2 %>
   <%= link_to omniauth_authorize_path(resource_name, provider), method: :post do %>
     <div class="mx-auto bg-gray-200 h-12 max-w-sm	rounded-md flex items-center justify-center">
-      <%= image_tag 'google/g_logo', class: 'h-3/4 mr-3' %>
+      <%= image_tag 'google/g_logo.png', class: 'h-3/4 mr-3' %>
       <span class="font-medium">Sign in with Google</span>
     </div>
   <% end %>
