@@ -1,0 +1,26 @@
+<% if current_user %>
+  <h2><%= current_user.email %></h2>
+  <%= link_to 'Edit account', edit_user_registration_path %>
+  <%= button_to 'Logout', destroy_user_session_path, data: { turbo: false }, method: :delete %>
+<% else %>
+  <%= link_to 'Login', new_user_session_path %>
+  <%= link_to 'Create Account', new_user_registration_path %>
+<% end %>
+
+<h1 class="font-bold text-4xl mb-4">Easy List</h1>
+
+<section class="mb-3">
+  <h2>My lists</h2>
+  <%= turbo_frame_tag "lists", src: lists_path, loading: 'lazy', target: '_top' do %>
+    <i class="fas fa-spinner fa-spin fa-2xl"></i>
+    <span>Loading lists...</span>
+  <% end %>
+</section>
+
+<section>
+  <h2>My notes</h2>
+  <%= turbo_frame_tag "notes", src: notes_path, loading: 'lazy', target: '_top' do %>
+    <i class="fas fa-spinner fa-spin fa-2xl"></i>
+    <span>Loading lists...</span>
+  <% end %>
+</section>

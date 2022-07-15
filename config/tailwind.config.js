@@ -8,9 +8,20 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
+    fontFamily: {
+      sans: ['Hind', 'sans-serif'],
+      heading: ['Montserrat', 'sans-serif']
+    },
     extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      // fontFamily: {
+      //   sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      // },
+      backgroundImage: {
+        'home-pattern':
+          "linear-gradient(to right top, #48829e 50%, #51dacf 50%)"
+      },
+      colors: {
+        'lemon-meringue': '#FAF0CA'
       },
     },
   },

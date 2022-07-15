@@ -4,11 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
-  get 'notes/show'
-  get 'pages/home'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
   root to: "pages#home"
 
   resources :lists do
@@ -17,4 +13,6 @@ Rails.application.routes.draw do
   end
 
   resources :notes, only: [:index, :show, :new, :create, :update]
+
+  get '/dashboard', to: 'pages#dashboard'
 end
