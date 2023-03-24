@@ -20,6 +20,6 @@ export default class extends Controller {
     this.inputTimeout = setTimeout(() => {
       this.spinnerTarget.classList.remove('invisible')
       this.editFormTarget.requestSubmit()
-    }, 2000)
+    }, 200)
   }
 }
