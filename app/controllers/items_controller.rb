@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     if item.save
       render turbo_stream: [
         turbo_stream.prepend(:items, partial: 'items/item', locals: { item: item }),
-        turbo_stream.update(:items_count, Item.not_done.count),
+        turbo_stream.update(:items_count, Item.where(list: item.list).not_done.count),
         turbo_stream.replace('add-item-wrapper', partial: 'items/add_item_button', locals: { list: item.list })
       ]
     else
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       render turbo_stream: [
         turbo_stream.replace(helpers.dom_id(@item), partial: 'items/item', locals: { item: @item }),
-        turbo_stream.update(:items_count, Item.not_done.count)
+        turbo_stream.update(:items_count, Item.where(list: @item.list).not_done.count)
       ]
     end
   end
@@ -43,6 +43,6 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    @items = Item.order(created_at: :desc)
+    @items = Item.where(list_id: params[:list_id]).order(created_at: :desc)
   end
 end

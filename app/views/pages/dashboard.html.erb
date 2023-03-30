@@ -1,5 +1,5 @@
-<section class="mb-3">
-  <h2>My lists</h2>
+<section class="mb-6">
+  <h2 class="mb-4">My lists</h2>
   <%= turbo_frame_tag "lists", src: lists_path, loading: 'lazy', target: '_top' do %>
     <i class="fas fa-spinner fa-spin fa-2xl"></i>
     <span>Loading lists...</span>
@@ -7,7 +7,7 @@
 </section>
 
 <section>
-  <h2>My notes</h2>
+  <h2 class="mb-4">My notes</h2>
   <%= turbo_frame_tag "notes", src: notes_path, loading: 'lazy', target: '_top' do %>
     <i class="fas fa-spinner fa-spin fa-2xl"></i>
     <span>Loading lists...</span>

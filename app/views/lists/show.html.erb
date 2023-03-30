@@ -1,6 +1,9 @@
 <%= render 'shared/back_home' %>
 
-<h2><%= @list.name %> <span id="items_count" class="text-sm bg-blue-300 p-1 rounded-md"><%= @list.items.not_done.count %></span></h2>
+<div class="flex items-center">
+  <h2><%= @list.name %></h2>
+  <div id="items_count" class="flex justify-center items-center text-xs h-5 w-5 bg-blue-300 rounded-full ml-1"><%= @list.items.not_done.count %></div>
+</div>
 
 <%= render partial: 'items/add_item_button', locals: { list: @list } %>
 
@@ -11,4 +14,6 @@
   </div>
 <% end %>
 
-<%= link_to 'Clear list', list_clear_items_path(@list), data: { turbo_method: :delete } %>
+<% if @list.items.present? %>
+  <%= link_to 'Clear list', list_clear_items_path(@list), data: { turbo_method: :delete }, class: 'block mt-3' %>
+<% end %>

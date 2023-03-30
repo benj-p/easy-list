@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  resources :notes, only: [:index, :show, :new, :create, :update]
+  resources :notes, only: [:index, :show, :new, :create, :update, :destroy]
 
   get '/dashboard', to: 'pages#dashboard'
 end

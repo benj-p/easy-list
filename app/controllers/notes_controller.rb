@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :update]
+  before_action :set_note, only: [:show, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -11,9 +11,7 @@ class NotesController < ApplicationController
     user_not_authorized if @note.user != current_user
   end
 
-  def new
-    
-  end
+  def new; end
 
   def create
     @note = Note.new(note_params)
@@ -30,6 +28,12 @@ class NotesController < ApplicationController
         turbo_stream.replace("edit_form", partial: 'notes/edit_form', locals: { note: @note }),
         turbo_stream.replace("spinner", partial: 'shared/spinner')
       ]
+    end
+  end
+
+  def destroy
+    if @note.destroy
+      render turbo_stream: turbo_stream.replace(:notes, partial: 'notes/note', collection: current_user.notes)
     end
   end
 

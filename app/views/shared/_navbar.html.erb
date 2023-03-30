@@ -1,0 +1,12 @@
+<nav data-controller="nav" class="flex justify-between">
+  <h1 class="font-bold text-4xl mb-4">Easy List</h1>
+  <div class="relative">
+    <%= render 'shared/avatar_small' %>
+    <div class="absolute right-0 hidden bg-white border mt-2 p-3 whitespace-nowrap" data-nav-target="menu">
+      <ul>
+        <%= link_to 'Edit account', edit_user_registration_path %>
+        <%= button_to 'Logout', destroy_user_session_path, data: { turbo: false }, method: :delete %>
+      </ul>
+    </div>
+  </div>
+</nav>

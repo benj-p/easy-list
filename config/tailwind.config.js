@@ -9,7 +9,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Hind', 'sans-serif'],
+      sans: ['Karla', 'sans-serif'],
       heading: ['Montserrat', 'sans-serif']
     },
     extend: {
