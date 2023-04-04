@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @lists = List.where(user: current_user)
+    @lists = List.where(user: current_user).ordered_by_rank
     render partial: 'lists/lists', locals: { lists: @lists }
   end
 
@@ -13,7 +13,7 @@ class ListsController < ApplicationController
 
   def destroy
     if @list.destroy
-      render turbo_stream: turbo_stream.replace(:lists, partial: 'lists/list', collection: current_user.lists)
+      render turbo_stream: turbo_stream.remove(@list)
     end
   end
 

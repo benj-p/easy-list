@@ -1,4 +1,4 @@
-<div class="group flex justify-between bg-white rounded-lg py-3 px-5 mb-2">
+<div id=<%= dom_id(note) %> class="group flex justify-between bg-white rounded-lg py-3 px-5 mb-2 cursor-grab active:cursor-grabbing" data-sortable-target="item">
   <%= link_to note_path(note) do %>
     <%= note.title %>
   <% end %>

@@ -3,7 +3,7 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notes = Note.where(user: current_user)
+    @notes = Note.where(user: current_user).ordered_by_rank
     render partial: 'notes/notes', locals: { notes: @notes }
   end
 
@@ -33,7 +33,13 @@ class NotesController < ApplicationController
 
   def destroy
     if @note.destroy
-      render turbo_stream: turbo_stream.replace(:notes, partial: 'notes/note', collection: current_user.notes)
+      render turbo_stream: turbo_stream.remove(@note)
+    end
+  end
+
+  def update_ranks
+    params["ranks"].each do |id, rank|
+      Note.find(id).update(rank: rank)
     end
   end
 

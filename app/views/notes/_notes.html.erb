@@ -1,3 +1,5 @@
 <%= turbo_frame_tag "notes" do %>
-  <%= render partial: 'notes/note', collection: notes %>
+  <div data-controller="sortable" data-sortable-class-value="Note">
+    <%= render partial: 'notes/note', collection: notes %>
+  </div>
 <% end %>

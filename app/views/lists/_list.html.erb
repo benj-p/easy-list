@@ -1,4 +1,4 @@
-<div class="group flex justify-between bg-white rounded-lg py-3 px-5 mb-2">
+<div id=<%= dom_id(list) %> class="group flex justify-between bg-white rounded-lg py-3 px-5 mb-2" data-sortable-target="item">
   <%= link_to list_path(list) do %>
     <%= list.name %>
   <% end %>
